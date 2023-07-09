@@ -1,0 +1,16 @@
+* {
+    background: rgb(94, 210, 216);
+}
+
+ul {
+    list-style-type: none;
+}
+
+.form {
+    display: none;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+}

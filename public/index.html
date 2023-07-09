@@ -4,51 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chá Bia e Everson</title>
-    <link href="styles/home.css" rel="stylesheet" >
+    <link href="styles/index.css" rel="stylesheet" >
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body class="text-light">
-    <header class="landing-page p-5 container">
+    <header class="container p-3">
         <h1 class="text-center">CHÁ DE CASA NOVA</h1>
-        <img src="images/home.png" class="img-fluid rounded" alt="Image of the house" >
+        <img src="images/home.png" class="img-fluid rounded mx-auto d-block" alt="Image of the house" >
     </header>
+    
+    <section class="container text-center lists">
+        <p>
+            <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="collapse" data-bs-target="#listUnavailable" aria-expanded="false" aria-controls="listUnavailable">
+                Ver itens reservados
+            </button>
+        </p>
+        <div class="collapse" id="listUnavailable">
+            <div class="card card-body mb-2">
+                <ul class="text-start list-group">
+                    <li class="list-group-item"><input type="checkbox" class="m-2 unavailable" disabled checked>Ralador</li>
+                    <li class="list-group-item"><input type="checkbox" class="m-2 unavailable" disabled checked>Tábua</li>
+                    <li class="list-group-item"><input type="checkbox" class="m-2 unavailable" disabled checked>Conjunto para sobremesa</li>
+                    <li class="list-group-item"><input type="checkbox" class="m-2 unavailable" disabled checked>Lixeira</li>
+                    <li class="list-group-item"><input type="checkbox" class="m-2 unavailable" disabled checked>Frigideira</li>
+                    <li class="list-group-item"><input type="checkbox" class="m-2 unavailable" disabled checked>Lençol de cama</li>
+                    <li class="list-group-item"><input type="checkbox" class="m-2 unavailable" disabled checked>Toalhas de banho</li>
+                </ul>
+            </div>
+        </div>
 
-    <section class="lists container text-center">
         <h3>Itens Não Reservados</h3>
         <div class="p-2">
             <ul class="text-start list-group">
-                <li><input type="checkbox" class="m-2 available list-group-item" onclick="confirmChecked()">Jogo de Copos</li>
-                <li><input type="checkbox" class="m-2 available list-group-item">Pratos de vidro</li>
-                <li><input type="checkbox" class="m-2 available list-group-item">Jarra de Suco </li>
-                <li><input type="checkbox" class="m-2 available list-group-item">Escorredor </li>
-                <li><input type="checkbox" class="m-2 available list-group-item">Garrafa de café</li>
-                <li><input type="checkbox" class="m-2 available list-group-item">Panela de pressão</li>
-                <li><input type="checkbox" class="m-2 available list-group-item">Panos de prato </li>
-                <li><input type="checkbox" class="m-2 available list-group-item">Peneiras</li>
-                <li><input type="checkbox" class="m-2 available list-group-item">Recipientes de plástico </li>
-                <li><input type="checkbox" class="m-2 available list-group-item">Recipientes de vidro</li>
-                <li><input type="checkbox" class="m-2 available list-group-item">Panos de prato </li>
-                <li><input type="checkbox" class="m-2 available list-group-item">Peneiras</li>
-                <li><input type="checkbox" class="m-2 available list-group-item">Recipientes de plástico </li>
-                <li><input type="checkbox" class="m-2 available list-group-item">Recipientes de vidro</li>
+                <li class="list-group-item"><input type="checkbox" class="m-2 available">Jogo de Copos</li>
+                <li class="list-group-item"><input type="checkbox" class="m-2 available">Pratos de vidro</li>
+                <li class="list-group-item"><input type="checkbox" class="m-2 available">Jarra de Suco </li>
+                <li class="list-group-item"><input type="checkbox" class="m-2 available">Escorredor </li>
+                <li class="list-group-item"><input type="checkbox" class="m-2 available">Garrafa de café</li>
+                <li class="list-group-item"><input type="checkbox" class="m-2 available">Panela de pressão</li>
+                <li class="list-group-item"><input type="checkbox" class="m-2 available">Panos de prato </li>
+                <li class="list-group-item"><input type="checkbox" class="m-2 available">Peneiras</li>
+                <li class="list-group-item"><input type="checkbox" class="m-2 available">Recipientes de plástico </li>
+                <li class="list-group-item"><input type="checkbox" class="m-2 available">Recipientes de vidro</li>
+                <li class="list-group-item"><input type="checkbox" class="m-2 available">Panos de prato </li>
+                <li class="list-group-item"><input type="checkbox" class="m-2 available">Peneiras</li>
+                <li class="list-group-item"><input type="checkbox" class="m-2 available">Recipientes de plástico </li>
+                <li class="list-group-item"><input type="checkbox" class="m-2 available">Recipientes de vidro</li>
             </ul>
         </div>
-
-        <h3>Itens Reservados</h3>
-        <div class="p-2">
-            <ul class="text-start list-group">
-                <li><input type="checkbox" class="m-2 unavailable list-group-item" disabled checked>Ralador</li>
-                <li><input type="checkbox" class="m-2 unavailable list-group-item" disabled checked>Tábua</li>
-                <li><input type="checkbox" class="m-2 unavailable list-group-item" disabled checked>Conjunto para sobremesa</li>
-                <li><input type="checkbox" class="m-2 unavailable list-group-item" disabled checked>Lixeira</li>
-                <li><input type="checkbox" class="m-2 unavailable list-group-item" disabled checked>Frigideira</li>
-                <li><input type="checkbox" class="m-2 unavailable list-group-item" disabled checked>Lençol de cama</li>
-                <li><input type="checkbox" class="m-2 unavailable list-group-item" disabled checked>Toalhas de banho</li>
-            </ul>
+        
+        <div class="p-3">
+            <button class="btn btn-primary btn-lg" type="button" onclick="markOptions()">Confirmar presentes</button>
         </div>
     </section>
 
-    <script type="module" src="scripts/index.js"></script>
+    <form class="container text-center form">
+        <div class="input-group p-2">
+            <span class="input-group-text ">Nome</span>
+            <input type="text" class="form-control">
+        </div>
+
+        <div class="input-group p-2">
+            <span class="input-group-text">WhatsApp</span>
+            <input type="tel" class="form-control" placeholder="(11) 91111-1111">
+        </div>
+        
+        <div class="p-2">
+            <h4>Items selecionados</h4>
+            <div class="selected-items"></div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-lg m-2">Confirmar presentes</button>
+    </form>
+
+
+    <script src="scripts/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 </body>
