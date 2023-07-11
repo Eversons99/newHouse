@@ -1,12 +1,11 @@
-import express from 'express'
+import express from "express"
+import routes from "./routes/index.js"
 const app = express()
 const port = 8100
 
+app.use(express.json())
+app.use(routes)
 app.use(express.static('C:/Users/Everson/Desktop/newHouse/public'))
-
-app.get('/home', (req, res) => {
-    res.send('index.html')
-})
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`)
