@@ -7,6 +7,7 @@ class SaveService {
             await dbUser.create({name, whatsapp, gifts})
             return {"message": "Dados registrados com sucesso"}
         } catch (error) {
+            console.log(error)
             return {
                 "message": "Erro ao registrar dados no banco"
             }
