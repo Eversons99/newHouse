@@ -22,7 +22,14 @@ ul {
 
 }
 
-.my-alert-success {
-    display: none;
+.alert-error {
+    background: rgb(248, 215, 218);
 }
+
+.my-alert-success, .my-alert-error  {
+    display: none;
+    justify-content: center;
+}
+
+
 

@@ -8,24 +8,34 @@
     // BACK
         // Criar rota para inserir items -- OK
         // Renderizar items disponíveis -- OK
-        // Atualizar banco
-        // Criar alert informando que o dado foi atualizado 
-        // Dar um reload na página para buscar dados atualizados
-
+        // Atualizar banco -- OK
+        // Criar alert informando que o dado foi atualizado -- OK
+        // Dar um reload na página para buscar dados atualizados -- OK
 async function loadList(){
     try {
+        const redirectedUser = localStorage.getItem("redirect")
+        const checkError = localStorage.getItem("error")
+ 
         let listUnavailable = await fetch('http://192.168.18.23:8100/app/list')
         listUnavailable = await listUnavailable.json()
 
-        if(!listUnavailable) return alert('Lista vazia retornada do banco, utilize a API para inserir sua lista de presentes')
+        if(!listUnavailable || listUnavailable.length == 0) return alert('Lista vazia retornada do banco, utilize a API para inserir sua lista de presentes')
         
         renderList(listUnavailable)
+
+        if (checkError == 'true' && redirectedUser == 'true'){
+            showAlert('.my-alert-error')
+        
+        } else if (checkError == 'false' && redirectedUser == 'true') {
+            showAlert('.my-alert-success')
+        }
 
     } catch (error) {
         console.log(error)
         alert('Ocorreu um erro ao carregar as lista')
     }
-
+    
+    window.localStorage.removeItem('redirect','error')
 }
 
 function renderList(items){
@@ -58,6 +68,15 @@ function renderList(items){
             liElement.append(inputElement, itemName)
         }
     }) 
+}
+
+function showAlert(selector){
+    const alert = document.querySelector(selector)
+    alert.style.display = "flex"
+ 
+    setInterval(()=>{
+        alert.style.display = "none"
+    }, 5000) 
 }
 
 function markOptions(){
@@ -121,7 +140,7 @@ async function validateForm(){
         return alert('No campo WhatsApp coloque apenas o DD e o número do WhatsApp, não insira espaço ou caracteres especiais. Exemplo 11961027676')
     } 
 
-    //button.disabled = true;
+    button.disabled = true;
     const gifts = getMarkedItems()
     
     const options = {
@@ -138,15 +157,16 @@ async function validateForm(){
 
     let saveDevice = await fetch('http://192.168.18.23:8100/owner/save', options)
     saveDevice = await saveDevice.json()
-    console.log(saveDevice)
 
     if (saveDevice.message == "Dados registrados com sucesso"){
-        const alert = document.querySelector('.my-alert-success')
-        alert.style.display = "flex"
-        
-        // setInterval(() => {
-        //     alert.style.display = "none" 
-        // }, 3000);
+        window.localStorage.setItem('redirect', 'true')
+        window.localStorage.setItem('error', 'false')
+        window.location = 'http://192.168.18.23:8100/index.html'
+
+    } else {        
+        window.location = 'http://192.168.18.23:8100/index.html'
+        window.localStorage.setItem('redirect', 'true')
+        window.localStorage.setItem('error', 'true')
     }
 }
 
