@@ -1,8 +1,10 @@
 import { Router } from "express";
-import userRouter from './user.routes.js'
+import ownerRouter from './owner.routes.js'
+import appRouter from './app.routes.js'
 
 const routes = Router()
 
-routes.use('/user', userRouter)
+routes.use('/owner', ownerRouter)
+routes.use('/app', appRouter)
 
 export default routes

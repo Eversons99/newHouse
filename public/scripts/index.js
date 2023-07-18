@@ -1,9 +1,64 @@
-    // Esconder as listas  -- OK
-    // Coletar items selecionados -- OK
-    // Mostrar o forms para preenchimento -- OK
-    // Criar um regex para validar o telefone -- OK
-    // Atualizar banco -- OK
-    // Dar um reload na página para buscar dados datualizados
+    // FRONT
+        // Esconder as listas  -- OK
+        // Coletar items selecionados -- OK
+        // Mostrar o forms para preenchimento -- OK
+        // Criar um regex para validar o telefone -- OK
+        // Cerregar liste de forma dinâmica -- OK
+    
+    // BACK
+        // Criar rota para inserir items -- OK
+        // Renderizar items disponíveis -- OK
+        // Atualizar banco
+        // Criar alert informando que o dado foi atualizado 
+        // Dar um reload na página para buscar dados atualizados
+
+async function loadList(){
+    try {
+        let listUnavailable = await fetch('http://192.168.18.23:8100/app/list')
+        listUnavailable = await listUnavailable.json()
+
+        if(!listUnavailable) return alert('Lista vazia retornada do banco, utilize a API para inserir sua lista de presentes')
+        
+        renderList(listUnavailable)
+
+    } catch (error) {
+        console.log(error)
+        alert('Ocorreu um erro ao carregar as lista')
+    }
+
+}
+
+function renderList(items){
+    const containerAvailable = document.querySelector('#list-unavailable')
+    const containerUnavailable = document.querySelector('#list-available')
+
+    items.forEach(item => {
+        const liElement = document.createElement('li')
+        const inputElement = document.createElement('input')
+        const itemName = item.name
+
+        if (item.status == 'unavailable') {
+            liElement.setAttribute('class', 'list-group-item')
+            inputElement.setAttribute('type', 'checkbox')
+            inputElement.setAttribute('class', 'm-2')
+            inputElement.classList.add('unavailable')
+            inputElement.disabled = true
+            inputElement.checked = true
+     
+            containerAvailable.appendChild(liElement)
+            liElement.append(inputElement, itemName)
+            
+        } else {
+            liElement.setAttribute('class', 'list-group-item')
+            inputElement.setAttribute('type', 'checkbox')
+            inputElement.setAttribute('class', 'm-2')
+            inputElement.classList.add('available')
+
+            containerUnavailable.appendChild(liElement)
+            liElement.append(inputElement, itemName)
+        }
+    }) 
+}
 
 function markOptions(){
     const form = document.querySelector('.form')
@@ -18,12 +73,12 @@ function markOptions(){
             const listItem = document.createElement('li')
             listItem.textContent = item
             listItem.setAttribute('class', 'list-group-item')
-
             emptyList.appendChild(listItem)
         }
-        emptyList.setAttribute('class', 'list-group')
 
+        emptyList.setAttribute('class', 'list-group')
         showItem.appendChild(emptyList)
+
         lists.style.display = 'none'
         form.style.display = 'block'
     } 
@@ -37,7 +92,6 @@ function changeText(){
     } else {
         buttonContent.textContent = 'Ver itens reservados'
     }
-
 }
 
 function getMarkedItems(){
@@ -82,9 +136,10 @@ async function validateForm(){
         })
     }
 
-    let saveDevice = await fetch('http://192.168.18.23:8100/user/save', options)
+    let saveDevice = await fetch('http://192.168.18.23:8100/owner/save', options)
     saveDevice = await saveDevice.json()
     console.log(saveDevice)
+
     if (saveDevice.message == "Dados registrados com sucesso"){
         const alert = document.querySelector('.my-alert-success')
         alert.style.display = "flex"

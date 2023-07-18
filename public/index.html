@@ -7,7 +7,7 @@
     <link href="styles/index.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
-<body class="text-light">
+<body class="text-light" onload="loadList()">
     <header class="container p-3">
         <div class="my-alert-success">
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -33,35 +33,14 @@
         </p>
         <div class="collapse" id="listUnavailable">
             <div class="card card-body mb-2">
-                <ul class="text-start list-group">
-                    <li class="list-group-item"><input type="checkbox" class="m-2 unavailable" disabled checked>Ralador</li>
-                    <li class="list-group-item"><input type="checkbox" class="m-2 unavailable" disabled checked>Tábua</li>
-                    <li class="list-group-item"><input type="checkbox" class="m-2 unavailable" disabled checked>Conjunto para sobremesa</li>
-                    <li class="list-group-item"><input type="checkbox" class="m-2 unavailable" disabled checked>Lixeira</li>
-                    <li class="list-group-item"><input type="checkbox" class="m-2 unavailable" disabled checked>Frigideira</li>
-                    <li class="list-group-item"><input type="checkbox" class="m-2 unavailable" disabled checked>Lençol de cama</li>
-                    <li class="list-group-item"><input type="checkbox" class="m-2 unavailable" disabled checked>Toalhas de banho</li>
+                <ul class="text-start list-group" id="list-unavailable">
                 </ul>
             </div>
         </div>
 
         <h3>Itens Não Reservados</h3>
-        <div class="p-2">
-            <ul class="text-start list-group">
-                <li class="list-group-item"><input type="checkbox" class="m-2 available">Jogo de Copos</li>
-                <li class="list-group-item"><input type="checkbox" class="m-2 available">Pratos de vidro</li>
-                <li class="list-group-item"><input type="checkbox" class="m-2 available">Jarra de Suco </li>
-                <li class="list-group-item"><input type="checkbox" class="m-2 available">Escorredor </li>
-                <li class="list-group-item"><input type="checkbox" class="m-2 available">Garrafa de café</li>
-                <li class="list-group-item"><input type="checkbox" class="m-2 available">Panela de pressão</li>
-                <li class="list-group-item"><input type="checkbox" class="m-2 available">Panos de prato </li>
-                <li class="list-group-item"><input type="checkbox" class="m-2 available">Peneiras</li>
-                <li class="list-group-item"><input type="checkbox" class="m-2 available">Recipientes de plástico </li>
-                <li class="list-group-item"><input type="checkbox" class="m-2 available">Recipientes de vidro</li>
-                <li class="list-group-item"><input type="checkbox" class="m-2 available">Panos de prato </li>
-                <li class="list-group-item"><input type="checkbox" class="m-2 available">Peneiras</li>
-                <li class="list-group-item"><input type="checkbox" class="m-2 available">Recipientes de plástico </li>
-                <li class="list-group-item"><input type="checkbox" class="m-2 available">Recipientes de vidro</li>
+        <div>
+            <ul class="text-start list-group" id="list-available">
             </ul>
         </div>
         
