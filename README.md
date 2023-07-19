@@ -49,7 +49,7 @@ A instalação é bem simples:
 A interface WEB é bem intuitiva, acesse-a em **http://sua-url-aqui:8100/index.html**. 
 
 > **NOTA:**
-> Não se alterar o domínio
+> Não se esqueça de alterar o domínio
 
 **1.º**  Você pode ver, clicar no botão **Ver itens reservados** e ver a lista de presentes que estão indisponíveis que já foram escolhidos pelos usuários, esta lista permanecerá vazia até algum usuário selecionar algum presente:
 <br>
