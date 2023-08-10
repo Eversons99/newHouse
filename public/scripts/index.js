@@ -16,7 +16,7 @@ async function loadList(){
         const redirectedUser = localStorage.getItem("redirect")
         const checkError = localStorage.getItem("error")
  
-        let listUnavailable = await fetch('http://192.168.18.23:8100/app/list')
+        let listUnavailable = await fetch('http://localhost/app/list')
         listUnavailable = await listUnavailable.json()
 
         if(!listUnavailable || listUnavailable.length == 0) return alert('Lista vazia retornada do banco, utilize a API para inserir sua lista de presentes')
@@ -155,16 +155,16 @@ async function validateForm(){
         })
     }
 
-    let saveDevice = await fetch('http://192.168.18.23:8100/owner/save', options)
+    let saveDevice = await fetch('http://localhost/owner/save', options)
     saveDevice = await saveDevice.json()
 
     if (saveDevice.message == "Dados registrados com sucesso"){
         window.localStorage.setItem('redirect', 'true')
         window.localStorage.setItem('error', 'false')
-        window.location = 'http://192.168.18.23:8100/index.html'
+        window.location = 'http://localhost/index.html'
 
     } else {        
-        window.location = 'http://192.168.18.23:8100/index.html'
+        window.location = 'http://localhost/index.html'
         window.localStorage.setItem('redirect', 'true')
         window.localStorage.setItem('error', 'true')
     }
